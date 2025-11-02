@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أنمي ستريم - موقع الأنمي والمانغا</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-play-circle"></i>
+                    <span>أنمي ستريم</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#" class="active" data-page="home">الرئيسية</a></li>
+                    <li><a href="#" data-page="anime">الأنمي</a></li>
+                    <li><a href="#" data-page="manga">المانغا</a></li>
+                    <li><a href="#" data-page="trending">الأكثر شهرة</a></li>
+                </ul>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="ابحث عن أنمي أو مانغا...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="heroSection">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">مرحباً بك في عالم الأنمي</h1>
+            <p class="hero-subtitle">شاهد آلاف الأنميات واقرأ المانغا المفضلة لديك</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('anime')">
+                    <i class="fas fa-tv"></i> شاهد الآن
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToSection('manga')">
+                    <i class="fas fa-book"></i> اقرأ المانغا
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="loading-spinner">
+                <div class="spinner"></div>
+                <p>جاري التحميل...</p>
+            </div>
+
+            <!-- Trending Anime Section -->
+            <section class="content-section" id="trendingSection">
+                <div class="section-header">
+                    <h2><i class="fas fa-fire"></i> الأنمي الأكثر شهرة</h2>
+                    <a href="#" class="see-all" data-page="trending">عرض الكل</a>
+                </div>
+                <div class="anime-grid" id="trendingAnime"></div>
+            </section>
+
+            <!-- Top Anime Section -->
+            <section class="content-section" id="topAnimeSection">
+                <div class="section-header">
+                    <h2><i class="fas fa-star"></i> أفضل الأنميات</h2>
+                    <a href="#" class="see-all" data-page="anime">عرض الكل</a>
+                </div>
+                <div class="anime-grid" id="topAnime"></div>
+            </section>
+
+            <!-- Airing Anime Section -->
+            <section class="content-section" id="airingSection">
+                <div class="section-header">
+                    <h2><i class="fas fa-broadcast-tower"></i> الأنمي الحالي</h2>
+                </div>
+                <div class="anime-grid" id="airingAnime"></div>
+            </section>
+
+            <!-- Manga Section -->
+            <section class="content-section" id="mangaSection">
+                <div class="section-header">
+                    <h2><i class="fas fa-book-open"></i> المانغا الأكثر قراءة</h2>
+                    <a href="#" class="see-all" data-page="manga">عرض الكل</a>
+                </div>
+                <div class="anime-grid" id="topManga"></div>
+            </section>
+
+            <!-- Search Results -->
+            <section class="content-section hidden" id="searchResults">
+                <div class="section-header">
+                    <h2><i class="fas fa-search"></i> نتائج البحث</h2>
+                </div>
+                <div class="anime-grid" id="searchGrid"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal for Anime/Manga Details -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Video Player Modal -->
+    <div id="playerModal" class="modal">
+        <div class="modal-content player-modal">
+            <button class="modal-close">&times;</button>
+            <div id="playerBody">
+                <div class="episode-selector" id="episodeSelector"></div>
+                <div class="video-container" id="videoContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-play-circle"></i> أنمي ستريم</h3>
+                    <p>منصتك المفضلة لمشاهدة الأنمي وقراءة المانغا</p>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#" data-page="home">الرئيسية</a></li>
+                        <li><a href="#" data-page="anime">الأنمي</a></li>
+                        <li><a href="#" data-page="manga">المانغا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>تابعنا</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 أنمي ستريم. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
